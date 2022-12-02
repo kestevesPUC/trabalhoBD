@@ -18,7 +18,7 @@ class LoginController extends Controller
     {
         $dados = $req->all();
         return Auth::attempt(['email' => $dados['email'], 'password' => $dados['senha']]) ?
-            view('admin.cursos') : response()->json(['success' => false,'message' => 'Email ou senha incoretos!']);
+            response()->json(['success' => true]) : response()->json(['success' => false,'message' => 'Email ou senha incoretos!']);
     }
 
     public function sair()

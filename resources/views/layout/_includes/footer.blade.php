@@ -27,23 +27,24 @@
 
         $('#login-btn').on('click', function () {
                 $.ajax({
-                    url: route('site.login.entrar'),
+                    url: "{{route('site.login.entrar')}}",
                     type: 'POST',
                     dataType: 'json',
                     data:{
-                    email: $('#email').val(),
-                    senha: $('#senha').val()
-                },success: function(returnRota){
-                    if (returnRota.success) {
-                        window.location.href = route('admin.cursos.lista');
+                        email: $('#email').val(),
+                        senha: $('#senha').val()
+                    },
+                    success: function(returnRota){
+                        if (returnRota.success) {
+                            window.location.href = '{{ route('admin.cursos.lista') }}';
 
-                    } else {
+                        } else {
 
-                        alert(returnRota.message);
-                        window.location.href = route('#');
+                            alert(returnRota.message);
+                            window.location.href = route('#');
+                        }
                     }
-                }
-            })
+                })
         });
 
 
